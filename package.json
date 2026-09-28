@@ -1,0 +1,40 @@
+{
+  "name": "pounce-cat-tv",
+  "productName": "Pounce",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A fullscreen interactive screen toy for cats featuring animated mouse, bug, fish, bird, cursor, and laser targets.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check main.js && node --check script.js && node --check scripts/build-windows.js && node --check scripts/create-installer.js",
+    "audit": "npm audit",
+    "verify": "npm run check && npm audit",
+    "package:win": "node scripts/build-windows.js",
+    "installer:win": "node scripts/create-installer.js",
+    "dist:win": "npm run verify && npm run package:win && npm run installer:win"
+  },
+  "keywords": [
+    "cat",
+    "cat-toy",
+    "desktop-app",
+    "electron",
+    "pet-enrichment"
+  ],
+  "author": "Joe B.",
+  "license": "MIT",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "devDependencies": {
+    "@electron/fuses": "2.1.3",
+    "@electron/packager": "20.3.0",
+    "electron": "44.4.5",
+    "electron-winstaller": "5.4.4",
+    "prettier": "3.9.9"
+  },
+  "allowScripts": {
+    "electron-winstaller@5.4.4": true
+  }
+}

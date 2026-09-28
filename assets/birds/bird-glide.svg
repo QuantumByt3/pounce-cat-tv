@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+  <defs>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#93a9c7"/>
+      <stop offset="55%" stop-color="#627a99"/>
+      <stop offset="100%" stop-color="#3c5068"/>
+    </linearGradient>
+
+    <linearGradient id="wingGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a4b8d1"/>
+      <stop offset="55%" stop-color="#5d728f"/>
+      <stop offset="100%" stop-color="#31455b"/>
+    </linearGradient>
+
+    <linearGradient id="bellyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3e89f"/>
+      <stop offset="100%" stop-color="#cfbf67"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Far wing -->
+  <path
+    d="M136 84
+       C111 58 78 34 42 23
+       C61 48 79 70 100 94
+       C111 103 124 104 141 95 Z"
+    fill="#6f83a0"
+    stroke="#243444"
+    stroke-width="2.5"
+  />
+
+  <!-- Tail -->
+  <path
+    d="M92 101
+       L34 121
+       L82 93
+       L38 81
+       L98 84 Z"
+    fill="#41566e"
+    stroke="#223240"
+    stroke-width="2.5"
+  />
+
+  <!-- Tail feather lines -->
+  <path d="M91 91 L45 82" fill="none" stroke="#243444" stroke-width="2"/>
+  <path d="M91 96 L42 116" fill="none" stroke="#243444" stroke-width="2"/>
+
+  <!-- Body -->
+  <ellipse
+    cx="156"
+    cy="97"
+    rx="74"
+    ry="36"
+    fill="url(#bodyGrad)"
+    stroke="#223240"
+    stroke-width="2.5"
+  />
+
+  <!-- Belly -->
+  <path
+    d="M108 108
+       C126 126 171 133 212 113
+       C192 136 136 139 104 114 Z"
+    fill="url(#bellyGrad)"
+    opacity="0.95"
+  />
+
+  <!-- Head -->
+  <ellipse
+    cx="239"
+    cy="84"
+    rx="30"
+    ry="27"
+    fill="#627a99"
+    stroke="#223240"
+    stroke-width="2.5"
+  />
+
+  <!-- Throat / lower head blend -->
+  <path
+    d="M210 90
+       C220 82 233 80 245 84
+       C254 87 259 94 258 102
+       C248 110 233 112 220 108
+       C212 104 208 97 210 90 Z"
+    fill="#50657f"
+    opacity="0.9"
+  />
+
+  <!-- Near wing -->
+  <path
+    d="M157 87
+       C179 53 219 28 274 22
+       C248 48 226 74 205 107
+       C190 117 170 112 152 99 Z"
+    fill="url(#wingGrad)"
+    stroke="#223240"
+    stroke-width="2.5"
+  />
+
+  <!-- Body feather accents -->
+  <path
+    d="M116 87 C139 76 163 75 183 81"
+    fill="none"
+    stroke="#b8c8da"
+    stroke-width="2.5"
+    opacity="0.45"
+    stroke-linecap="round"
+  />
+  <path
+    d="M118 98 C143 90 168 90 189 95"
+    fill="none"
+    stroke="#b8c8da"
+    stroke-width="2.5"
+    opacity="0.35"
+    stroke-linecap="round"
+  />
+
+  <!-- Eye -->
+  <circle cx="248" cy="82" r="4.8" fill="#0b0f12"/>
+  <circle cx="249.5" cy="80.5" r="1.2" fill="#ffffff"/>
+
+  <!-- Beak -->
+  <path
+    d="M265 86 L304 90 L265 95 Z"
+    fill="#d8bf57"
+    stroke="#7d6a26"
+    stroke-width="1.8"
+  />
+
+  <!-- Beak line -->
+  <path
+    d="M267 90 L295 90"
+    fill="none"
+    stroke="#8b7426"
+    stroke-width="1"
+  />
+</svg>

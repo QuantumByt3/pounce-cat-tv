@@ -1,0 +1,93 @@
+name: Bug report
+description: Report a reproducible problem with Pounce.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Pounce.
+
+        Do not use this form to report a security vulnerability.
+        Follow SECURITY.md for private security reporting.
+
+  - type: checkboxes
+    id: existing
+    attributes:
+      label: Existing issue check
+      options:
+        - label: I searched the existing issues and did not find the same problem.
+          required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Pounce version
+      description: Enter the version you are using.
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      description: Include the Windows edition/version if known.
+      placeholder: "Windows 11"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: installation
+    attributes:
+      label: How was Pounce installed?
+      options:
+        - GitHub release installer
+        - Built from source
+        - Development mode with npm start
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the problem clearly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: List the smallest reliable sequence that reproduces the problem.
+      placeholder: |
+        1. Open Pounce
+        2. Select Bird
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect Pounce to do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Additional information
+      description: Add screenshots, logs, or other useful context. Remove personal or sensitive information first.
+
+  - type: checkboxes
+    id: security
+    attributes:
+      label: Security confirmation
+      options:
+        - label: This report does not contain a suspected security vulnerability or sensitive information.
+          required: true

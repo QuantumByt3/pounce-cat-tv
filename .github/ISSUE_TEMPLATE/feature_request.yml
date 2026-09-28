@@ -1,0 +1,76 @@
+name: Feature request
+description: Propose a focused improvement to Pounce.
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Pounce intentionally prioritizes simplicity, privacy, security, and useful cat enrichment.
+
+        Please explain the user benefit before proposing additional complexity.
+
+  - type: checkboxes
+    id: existing
+    attributes:
+      label: Existing request check
+      options:
+        - label: I searched the existing issues and did not find the same request.
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the user need rather than only the proposed implementation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed improvement
+      description: Describe the feature or change.
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefit
+    attributes:
+      label: User benefit
+      description: Explain how this improves usability, reliability, accessibility, security, privacy, maintainability, or cat enrichment.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Primary area
+      options:
+        - Cat target or animation
+        - User interface
+        - Accessibility
+        - Windows installation
+        - Security
+        - Privacy
+        - Performance
+        - Documentation
+        - Development tooling
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: considerations
+    attributes:
+      label: Security, privacy, or complexity considerations
+      description: Note any new permissions, network activity, dependencies, stored data, or significant complexity this feature would introduce.
+
+  - type: checkboxes
+    id: simplicity
+    attributes:
+      label: Project principles
+      options:
+        - label: I understand that Pounce favors the smallest clear solution that preserves security, privacy, and maintainability.
+          required: true

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+      default-src 'none';
+      script-src 'self';
+      style-src 'self';
+      img-src 'self';
+      connect-src 'none';
+      font-src 'none';
+      media-src 'none';
+      object-src 'none';
+      frame-src 'none';
+      worker-src 'none';
+      base-uri 'none';
+      form-action 'none';
+    "
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta
+      name="description"
+      content="Pounce is a fullscreen screen toy for cats featuring a mouse, bug, fish, bird, Windows-style cursor, and laser dot."
+    />
+
+    <title>Pounce — Cat TV</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <canvas id="c" aria-hidden="true"></canvas>
+
+    <div id="intro">
+      <div class="card">
+        <h1>Pounce</h1>
+
+        <p>
+          A screen toy for cats. Critters scurry, fly, pause, hide off the edge,
+          and sneak back in.
+        </p>
+
+        <button id="start" type="button">Start the show</button>
+
+        <p class="tips">
+          Controls fade when the mouse sits still.<br />
+
+          <kbd>F</kbd>
+          fullscreen &nbsp;
+
+          <kbd>H</kbd>
+          hide controls &nbsp;
+
+          <kbd>P</kbd>
+          pause/resume &nbsp;
+
+          <kbd>1</kbd>–<kbd>6</kbd>
+          switch target
+        </p>
+      </div>
+    </div>
+
+    <div id="bar" role="toolbar" aria-label="Pounce controls">
+      <div class="group" data-set="type" role="group" aria-label="Target">
+        <button type="button" data-v="mouse" class="on" aria-pressed="true">
+          🐭 Mouse
+        </button>
+
+        <button type="button" data-v="bug" aria-pressed="false">🐞 Bug</button>
+
+        <button type="button" data-v="fish" aria-pressed="false">
+          🐟 Fish
+        </button>
+
+        <button type="button" data-v="bird" aria-pressed="false">
+          🐦 Bird
+        </button>
+
+        <button type="button" data-v="cursor" aria-pressed="false">
+          🖱 Cursor
+        </button>
+
+        <button type="button" data-v="laser" aria-pressed="false">
+          🔴 Laser
+        </button>
+      </div>
+
+      <div
+        class="group"
+        data-set="count"
+        role="group"
+        aria-label="Number of targets"
+      >
+        <span>How many</span>
+
+        <button type="button" data-v="1" class="on" aria-pressed="true">
+          1
+        </button>
+
+        <button type="button" data-v="2" aria-pressed="false">2</button>
+
+        <button type="button" data-v="3" aria-pressed="false">3</button>
+      </div>
+
+      <div
+        class="group"
+        data-set="pace"
+        role="group"
+        aria-label="Movement pace"
+      >
+        <span>Pace</span>
+
+        <button type="button" data-v="0.6" aria-pressed="false">Calm</button>
+
+        <button type="button" data-v="1" class="on" aria-pressed="true">
+          Normal
+        </button>
+
+        <button type="button" data-v="1.5" aria-pressed="false">Zoomies</button>
+      </div>
+
+      <div class="group" role="group" aria-label="Application controls">
+        <button type="button" id="sound" aria-pressed="false">
+          🔇 Sound off
+        </button>
+
+        <button type="button" id="pause" aria-pressed="false">⏸ Pause</button>
+
+        <button type="button" id="fs" aria-pressed="false">⛶ Fullscreen</button>
+      </div>
+
+      <div id="catches" aria-live="polite" aria-atomic="true">Catches: 0</div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

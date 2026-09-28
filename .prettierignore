@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.vscode/
+
+package-lock.json
+
+*.ico
+*.gif
+*.png
+*.jpg
+*.jpeg
+*.exe
+*.dll
+*.nupkg
