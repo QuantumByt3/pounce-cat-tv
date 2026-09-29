@@ -4,9 +4,9 @@ All notable changes to Pounce will be documented in this file.
 
 The format follows the general principles of Keep a Changelog, and the project uses semantic versioning for releases.
 
-## [0.1.0] - Unreleased
+## [1.0.0] - Unreleased
 
-Initial Windows pre-release candidate.
+Initial public Windows desktop release.
 
 ### Added
 
@@ -38,7 +38,7 @@ Initial Windows pre-release candidate.
 - Added semantic toolbar and control-group information.
 - Added `aria-pressed` state handling for selectable controls.
 - Added live-region support for the catch counter.
-- Hidden visual canvas content from assistive technology.
+- Hid visual canvas content from assistive technology.
 - Prevented hidden controls from remaining keyboard-focusable.
 - Improved state synchronization for fullscreen, sound, pause, and target controls.
 
@@ -69,12 +69,24 @@ Initial Windows pre-release candidate.
 - Added reproducible dependency installation through `package-lock.json`.
 - Added JavaScript syntax verification.
 - Added npm vulnerability auditing.
-- Added Electron fuse verification.
+- Added Electron fuse hardening.
 - Moved intermediate Electron package output outside the VS Code workspace.
 - Excluded development, repository, and editor files from the packaged application.
 - Reduced packaged `app.asar` contents to runtime-required files only.
-- Added Windows installer SHA-256 verification workflow.
+- Added Windows installer SHA-256 verification.
 - Validated install, launch, uninstall, and reinstall behavior on Windows 11.
+- Added a custom installer loading animation.
+
+### Repository security and maintenance
+
+- Added GitHub Actions validation on pushes and pull requests to `main`.
+- Added CodeQL analysis.
+- Added Dependabot version and security monitoring.
+- Enabled secret scanning and push protection.
+- Enabled private vulnerability reporting.
+- Added an active protection ruleset for `main`.
+- Added structured bug-report and feature-request forms.
+- Added a pull-request template.
 
 ### Documentation
 
@@ -82,8 +94,8 @@ Initial Windows pre-release candidate.
 - Added a security policy.
 - Added a privacy policy.
 - Added contribution guidelines.
-- Added repository hygiene files for Git, editors, and line endings.
+- Added repository hygiene files for Git, editors, formatting, and line endings.
 
-### Known release limitation
+### Known limitation
 
-- The Windows installer is not yet code-signed. Public release signing should be addressed before treating the installer as a fully trusted production distribution.
+- The direct-download Windows installer is not currently Authenticode code-signed. Windows may display an **Unknown Publisher** or reputation warning. Release notes should include the installer's SHA-256 hash so users can verify file integrity.
