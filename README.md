@@ -2,23 +2,21 @@
 
 Pounce is a lightweight Windows desktop screen toy for cats. It animates interactive targets across the screen for visual enrichment and play.
 
-Current release status: **pre-release (v0.1.0)**.
+## Download and install
 
-## For Windows users
+For normal use, download Pounce from the repository's official [Releases](https://github.com/QuantumByt3/pounce-cat-tv/releases) page.
 
-The normal user does **not** need Node.js, npm, Visual Studio Code, or a web browser.
-
-When a release is published:
-
-1. Open the repository's **Releases** page.
-2. Download `Pounce-Setup.exe`.
-3. Run the installer.
+1. Download `Pounce-Setup.exe` from the latest release.
+2. Optionally verify the installer's SHA-256 hash against the value published in the release notes.
+3. Run `Pounce-Setup.exe`.
 4. Launch **Pounce** from the Windows Start Menu.
 5. Select a target and press **Start the show**.
 
-Pounce currently targets **64-bit Windows 11**.
+Pounce is currently tested on **64-bit Windows 11**. Other Windows versions are not currently claimed as supported.
 
-> The current development installer is not yet code-signed. Windows may show an Unknown Publisher or reputation warning until release signing is implemented.
+> **Windows security notice:** The direct-download installer is currently not Authenticode code-signed. Windows may display an **Unknown Publisher** or reputation warning. Only install Pounce when it was downloaded from this repository's official Releases page, and verify the published SHA-256 hash when you want to confirm file integrity.
+
+If no release is currently published, developers can build Pounce from source using the instructions below.
 
 ## Features
 
@@ -29,17 +27,17 @@ Pounce currently targets **64-bit Windows 11**.
   - Bird
   - Windows-style cursor
   - Laser
-- One, two, or three targets at once.
+- One, two, or three simultaneous targets.
 - Three movement speeds: Calm, Normal, and Zoomies.
-- Optional synthesized sound effects.
+- Optional locally generated sound effects.
 - Fullscreen mode.
 - Pause and resume without closing the application.
 - Catch counter for clicks or taps.
-- Controls automatically fade during play.
-- Animated original SVG bird artwork.
+- Controls that automatically fade during play.
+- Original animated SVG bird artwork.
 - Custom Pounce application and installer branding.
 - Offline operation after installation.
-- No account, analytics, advertising, or telemetry.
+- No account, advertising, analytics, or telemetry.
 
 ## Controls
 
@@ -67,51 +65,53 @@ The application:
 - does not collect personal information;
 - does not include analytics or telemetry;
 - does not contain advertising;
-- does not send application data to external services; and
-- does not require camera, microphone, location, notification, USB, serial, or local-network permissions.
+- does not send application usage data to external services; and
+- does not request camera, microphone, location, notification, USB, serial, Bluetooth, or local-network access.
 
-The only browser-style permission intentionally allowed by the Electron application is **screen wake lock**, which is used to help keep the display awake during play.
+The only browser-style permission intentionally allowed by the Electron application is **screen wake lock**, which helps keep the display awake during active play.
 
-See [PRIVACY.md](PRIVACY.md) for the project privacy statement.
+See [PRIVACY.md](PRIVACY.md) for the full project privacy statement.
 
 ## Security
 
-The desktop application is intentionally hardened for a small local Electron application.
+Pounce uses a deliberately small Electron attack surface.
 
-Current controls include:
+Current application controls include:
 
-- Electron renderer sandbox enabled.
-- Node integration disabled in the renderer.
-- Context isolation enabled.
-- Restrictive Content Security Policy.
-- Custom `pounce://app/` local application protocol instead of `file://`.
-- New-window creation denied.
-- Renderer navigation denied.
-- Permission requests denied except screen wake lock from the trusted Pounce origin.
-- ASAR packaging with integrity validation enabled.
-- Electron configured to load application code only from `app.asar`.
-- `ELECTRON_RUN_AS_NODE` disabled.
-- Node environment and inspector command-line features disabled in the packaged executable.
-- Extra `file://` privileges disabled.
-- Zero runtime npm dependencies.
-- Direct development dependencies pinned to exact versions.
-- npm vulnerability auditing included in the verification workflow.
-- Secret scanning performed before publication.
+- renderer sandboxing;
+- `nodeIntegration: false`;
+- context isolation;
+- a restrictive Content Security Policy;
+- a custom local `pounce://app/` protocol instead of `file://`;
+- blocked renderer navigation and new-window creation;
+- permission requests denied except screen wake lock from the trusted Pounce origin;
+- ASAR packaging with embedded integrity validation;
+- `OnlyLoadAppFromAsar`;
+- `ELECTRON_RUN_AS_NODE` disabled;
+- Node environment-option and inspector command-line features disabled in the packaged executable;
+- unnecessary extra `file://` privileges disabled;
+- zero runtime npm dependencies; and
+- direct development dependencies pinned to exact versions.
 
-Security issues should be reported according to [SECURITY.md](SECURITY.md).
+Repository security controls include automated validation, npm vulnerability auditing, CodeQL analysis, Dependabot, secret scanning, push protection, private vulnerability reporting, and protection rules for `main`.
 
-## Development requirements
+See [SECURITY.md](SECURITY.md) for vulnerability reporting and security-support information.
 
-Development and packaging currently use:
+## Build from source
 
-- Windows 11
+### Requirements
+
+- 64-bit Windows 11
+- Git
 - Node.js `>=22.12.0`
 - npm
-- Electron `44.4.5`
-- `@electron/packager` `20.3.0`
-- `electron-winstaller` `5.4.4`
-- `@electron/fuses` `2.1.3`
-- Prettier
+
+Clone the repository:
+
+```powershell
+git clone https://github.com/QuantumByt3/pounce-cat-tv.git
+cd pounce-cat-tv
+```
 
 Install the exact dependency tree recorded in `package-lock.json`:
 
@@ -125,79 +125,69 @@ Start Pounce in development mode:
 npm start
 ```
 
-## Verification
+### Verify the source
 
-Run the project verification gate before packaging:
+Run:
 
 ```powershell
 npm run verify
 ```
 
-This currently performs JavaScript syntax checks and an npm security audit.
+This performs JavaScript syntax checks and an npm security audit.
 
-A successful run should finish with:
-
-```text
-found 0 vulnerabilities
-```
-
-## Build the Windows application
-
-Create the hardened temporary Windows package:
+Check formatting with:
 
 ```powershell
-npm run package:win
+npx prettier --check .
 ```
 
-The intermediate packaged application is written outside the repository under the current user's Windows temporary directory:
+### Build the Windows installer
 
-```text
-%TEMP%\PounceBuild\
-```
-
-This keeps generated Electron runtime files outside the source workspace and avoids editor file-lock problems.
-
-Create the Windows installer:
-
-```powershell
-npm run installer:win
-```
-
-The user-facing installer is written to:
-
-```text
-dist\installer\Pounce-Setup.exe
-```
-
-Run both verification and packaging steps with:
+Create the complete Windows distribution with:
 
 ```powershell
 npm run dist:win
 ```
 
-Generated `dist/` content and `node_modules/` are excluded from Git.
+That command:
 
-## Release verification
+1. runs the verification gate;
+2. creates the hardened Windows application package;
+3. applies the configured Electron security fuses; and
+4. creates the Windows installer.
 
-Before publishing an installer:
+The intermediate Electron application is built outside the repository under:
 
-1. Run `npm run verify`.
-2. Build the Windows package.
-3. Verify Electron security fuses.
-4. Inspect the packaged `app.asar` contents.
-5. Build the installer.
-6. Install from a clean folder outside the repository.
-7. Launch Pounce from the Start Menu.
-8. Smoke-test the application controls.
-9. Uninstall Pounce.
-10. Reinstall from the same installer.
-11. Calculate and publish the installer's SHA-256 hash.
+```text
+%TEMP%\PounceBuild\
+```
 
-Example:
+The final installer is written to:
+
+```text
+dist\installer\Pounce-Setup.exe
+```
+
+Generated `dist/` content and `node_modules/` are intentionally excluded from Git.
+
+You can also run the packaging stages individually:
+
+```powershell
+npm run package:win
+npm run installer:win
+```
+
+## Verify an installer hash
+
+Published releases should include the SHA-256 hash of `Pounce-Setup.exe`.
+
+To calculate it locally:
 
 ```powershell
 Get-FileHash .\dist\installer\Pounce-Setup.exe -Algorithm SHA256
 ```
+
+Compare the result with the hash published in the corresponding GitHub release.
 
 ## Project structure
 
@@ -222,16 +212,17 @@ pounce-cat-tv/
 
 ## Contributing
 
-Contributions should remain focused on simplicity, reliability, privacy, security, and useful cat enrichment.
+Contributions should remain focused on simplicity, reliability, privacy, security, accessibility, maintainability, and useful cat enrichment.
 
 Before submitting a change:
 
 ```powershell
 npm ci
 npm run verify
+npx prettier --check .
 ```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full contribution workflow.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution workflow.
 
 ## License
 

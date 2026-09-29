@@ -25,7 +25,7 @@ body:
     attributes:
       label: Pounce version
       description: Enter the version you are using.
-      placeholder: "0.1.0"
+      placeholder: "1.0.0"
     validations:
       required: true
 

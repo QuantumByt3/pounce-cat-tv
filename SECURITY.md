@@ -1,25 +1,23 @@
 # Security Policy
 
-Pounce is a small local Windows desktop application, but security reports are still taken seriously.
+Pounce is a small local Windows desktop application, but security reports are taken seriously.
 
 ## Supported versions
 
-Pounce is currently in pre-release development.
-
-| Version                    | Supported |
-| -------------------------- | --------- |
-| 0.1.x                      | Yes       |
-| Earlier development builds | No        |
-
 Only the latest published release is supported for security fixes.
+
+| Version                            | Supported |
+| ---------------------------------- | --------- |
+| 1.x                                | Yes       |
+| 0.x and earlier development builds | No        |
 
 ## Reporting a vulnerability
 
 Please do **not** open a public GitHub issue for a suspected security vulnerability.
 
-Use GitHub's **Private Vulnerability Reporting** feature for this repository when available.
+Use this repository's **Private Vulnerability Reporting** feature from the GitHub **Security** tab.
 
-If private vulnerability reporting is temporarily unavailable, do not post exploit details, credentials, secrets, or proof-of-concept material publicly. Wait for a private reporting channel to be restored.
+Do not post exploit details, credentials, secrets, proof-of-concept material, or other sensitive information in a public issue.
 
 ## What to include
 
@@ -35,7 +33,7 @@ A useful report should include:
 - relevant logs or screenshots; and
 - a proof of concept when one is necessary to demonstrate the issue.
 
-Please remove unrelated personal information, credentials, tokens, and private data before submitting evidence.
+Remove unrelated personal information, credentials, tokens, and private data before submitting evidence.
 
 ## Security scope
 
@@ -49,9 +47,9 @@ Examples of issues that are in scope include:
 - unsafe navigation or external-content execution;
 - unauthorized permission access;
 - ASAR integrity bypass;
-- installer or update behavior that creates a security risk;
+- installer behavior that creates a security risk;
 - dependency or supply-chain vulnerabilities that affect Pounce;
-- path traversal or local file access outside the intended application files;
+- path traversal or unintended local-file access;
 - sensitive information unintentionally included in a release; and
 - reproducible crashes that create a meaningful security impact.
 
@@ -62,15 +60,15 @@ The following are generally not security vulnerabilities by themselves:
 - ordinary application crashes without a security impact;
 - feature requests;
 - performance problems;
-- Windows SmartScreen or reputation warnings for an unsigned development build;
+- Windows SmartScreen or reputation warnings caused by an unsigned release;
 - unsupported operating systems; and
 - vulnerabilities that exist only in modified third-party builds of Pounce.
 
-These issues may still be reported through normal GitHub issues when the repository is public.
+These non-security issues may be reported through the repository's normal GitHub issue forms.
 
-## Current security design
+## Current application security design
 
-Pounce currently uses several defensive controls, including:
+Pounce currently uses defensive controls including:
 
 - Electron renderer sandboxing;
 - Node integration disabled in the renderer;
@@ -82,12 +80,23 @@ Pounce currently uses several defensive controls, including:
 - Electron security fuses;
 - ASAR integrity validation;
 - `OnlyLoadAppFromAsar`;
-- no runtime npm dependencies;
-- pinned direct development dependencies;
-- dependency auditing; and
-- secret scanning before release.
+- zero runtime npm dependencies; and
+- pinned direct development dependencies.
 
-Security controls are reviewed as the application evolves.
+## Repository security controls
+
+The repository also uses:
+
+- GitHub Actions validation;
+- npm vulnerability auditing;
+- CodeQL analysis;
+- Dependabot alerts and update pull requests;
+- secret scanning;
+- push protection;
+- private vulnerability reporting; and
+- an active protection ruleset for `main`.
+
+Security controls are reviewed as the application and repository evolve.
 
 ## Disclosure
 
