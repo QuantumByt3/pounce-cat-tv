@@ -4,7 +4,7 @@ All notable changes to Pounce will be documented in this file.
 
 The format follows the general principles of Keep a Changelog, and the project uses semantic versioning for releases.
 
-## [1.0.0] - Unreleased
+## [1.0.0] - 2026-09-28
 
 Initial public Windows desktop release.
 
